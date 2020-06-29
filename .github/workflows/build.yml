@@ -41,8 +41,11 @@ jobs:
         run: |
           yarn build
 
-      - name: Build the docker containers
-        run: |
-          echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
-          export BRANCH=`cat $GITHUB_EVENT_PATH`
-          yarn docker
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ninjawulf98/hapi-hello-world
+          tags: latest,master
+          path: /

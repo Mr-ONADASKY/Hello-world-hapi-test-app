@@ -13,8 +13,7 @@
         "start:testing": "node --trace-warnings --max-old-space-size=8192 --inspect=0.0.0.0:9222 dist/src/server.js",
         "dev": "ts-node-dev --ignore-watch node_modules --trace-warnings --respawn --transpileOnly --inspect=0.0.0.0:9222 --max-old-space-size=8192 src/server.ts",
         "lint": "eslint '*/**/*.{js,ts}' --fix",
-        "lint:check": "eslint '*/**/*.{js,ts}'",
-        "docker": "/bin/bash -c 'docker build --build-arg BRANCH=${BRANCH//[^a-zA-Z0-9\\\\.-]/} -t ninjawulf98/hapi-hello-world:${BRANCH//[^a-zA-Z0-9\\.-]/} . && docker push ninjawulf98/hapi-hello-world:${BRANCH//[^a-zA-Z0-9\\.-]/}'"
+        "lint:check": "eslint '*/**/*.{js,ts}'"
     },
     "repository": {
         "type": "git",
