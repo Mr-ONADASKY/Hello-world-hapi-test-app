@@ -11,6 +11,7 @@ const init = async () => {
     path: '/',
     handler: (request, h) => {
       console.log(request);
+
       return 'Hello World!';
     },
   });
@@ -24,4 +25,5 @@ process.on('unhandledRejection', err => {
   process.exit(1);
 });
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 init();

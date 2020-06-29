@@ -16,26 +16,13 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "airbnb/hooks",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-floating-promises": "error",
@@ -46,7 +33,6 @@
     "no-plusplus": "off",
     "class-methods-use-this": "off",
     "no-async-promise-executor": "off",
-    "react/static-property-placement": "off",
     "no-empty-function": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-unused-vars": "off",
@@ -72,16 +58,7 @@
     "no-use-before-define": ["off", "nofunc"],
     "no-param-reassign": "off",
     "no-nested-ternary": "off",
-    "no-console": "off",
-    "react/destructuring-assignment": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    ],
-    "react/jsx-one-expression-per-line": "off"
+    "no-console": "off"
   },
   "settings": {
     // eslint-disable-next-line
