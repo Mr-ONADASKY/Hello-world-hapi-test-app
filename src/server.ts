@@ -3,7 +3,7 @@ import { Server } from '@hapi/hapi';
 const init = async () => {
   const server = new Server({
     port: 3333,
-    host: 'localhost',
+    host: process.env.WEBSERVER_HOST || 'localhost',
   });
 
   server.route({
