@@ -1,0 +1,52 @@
+name: Master
+on:
+  push:
+    branches: [master]
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  build:
+    name: Build master
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Caching yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: |
+          sudo snap install yq jq
+          yarn setup
+          yarn bootstrap:ci
+
+      - name: Check linting
+        run: yarn lint:check
+
+      - name: Build the packages
+        run: |
+          yarn build
+
+      - name: Build the docker containers
+        run: |
+          echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
+          export BRANCH=`cat $GITHUB_EVENT_PATH | jq -er ".pull_request.head.ref // \"${GITHUB_REF##*/}\""`
+          export VERSION=`jq -r .version lerna.json`
+          echo "Build will use $BRANCH as branch name and $VERSION as version"
+          yarn docker
