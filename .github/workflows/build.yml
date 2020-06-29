@@ -48,4 +48,3 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: ninjawulf98/hapi-hello-world
           tags: latest,master
-          path: /
