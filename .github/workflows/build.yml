@@ -32,9 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo snap install yq jq
-          yarn setup
-          yarn bootstrap:ci
+          yarn
 
       - name: Check linting
         run: yarn lint:check
