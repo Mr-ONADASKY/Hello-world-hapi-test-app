@@ -46,7 +46,5 @@ jobs:
       - name: Build the docker containers
         run: |
           echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
-          export BRANCH=`cat $GITHUB_EVENT_PATH | jq -er ".pull_request.head.ref // \"${GITHUB_REF##*/}\""`
-          export VERSION=`jq -r .version lerna.json`
-          echo "Build will use $BRANCH as branch name and $VERSION as version"
+          export BRANCH=`cat $GITHUB_EVENT_PATH`
           yarn docker

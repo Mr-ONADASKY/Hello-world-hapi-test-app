@@ -14,7 +14,7 @@
         "dev": "ts-node-dev --ignore-watch node_modules --trace-warnings --respawn --transpileOnly --inspect=0.0.0.0:9222 --max-old-space-size=8192 src/server.ts",
         "lint": "eslint '*/**/*.{js,ts}' --fix",
         "lint:check": "eslint '*/**/*.{js,ts}'",
-        "docker": "/bin/bash -c 'docker build --build-arg BRANCH=${BRANCH//[^a-zA-Z0-9\\\\.-]/} -t f2fmarket/middleware:${BRANCH//[^a-zA-Z0-9\\.-]/} . && docker push f2fmarket/middleware:${BRANCH//[^a-zA-Z0-9\\.-]/}'",
+        "docker": "/bin/bash -c 'docker build --build-arg BRANCH=${BRANCH//[^a-zA-Z0-9\\\\.-]/} -t ninjawulf98/hapi-hello-world:${BRANCH//[^a-zA-Z0-9\\.-]/} . && docker push ninjawulf98/hapi-hello-world:${BRANCH//[^a-zA-Z0-9\\.-]/}'"
     },
     "repository": {
         "type": "git",
@@ -32,7 +32,9 @@
         "@types/hapi": "^18.0.3",
         "@types/node": "^14.0.1",
         "lint-staged": "^10.0.7",
-        "prettier": "^2.0.5"
+        "prettier": "^2.0.5",
+        "ts-node-dev": "^1.0.0-pre.49",
+        "typescript": "^3.9.5"
     },
     "importSort": {
         ".js, .jsx, .ts, .tsx": {
