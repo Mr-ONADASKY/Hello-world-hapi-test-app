@@ -10,7 +10,7 @@ const init = async () => {
     method: 'GET',
     path: '/',
     handler: (request, h) => {
-      console.log(request);
+      console.log(request.headers);
 
       return 'Hello World!';
     },
